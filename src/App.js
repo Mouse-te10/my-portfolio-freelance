@@ -261,18 +261,23 @@ const App = () => {
   
   const t = translations[lang];
 
+  const getPath = (url) => {
+    const base = process.env.PUBLIC_URL || '';
+    const cleanUrl = url.startsWith('/') ? url : '/' + url;
+    return base + cleanUrl;
+  };
   // ─────────────────────────────────────────────────────────────────────────────
   // ВАЖНО: все пути начинаются с  images/...  (без слэша в начале и без my-portfolio/)
   // Папка public/ — это корень сайта на GitHub Pages, React сам её подставляет.
   // ─────────────────────────────────────────────────────────────────────────────
   const projectsData = useMemo(() => ({
     featured: [
-      { id: 'f1', cat: "Веб-дизайн",       year: 2025, img: "images/избранное/5.png",            pdf: "images/избранное/autohub/autohub.pdf" },
-      { id: 'f2', cat: "Веб-дизайн",       year: 2025, img: "images/избранное/4.png",            pdf: "images/избранное/autopart/autopart.pdf" },
-      { id: 'f3', cat: "Веб-дизайн",       year: 2025, img: "images/избранное/1.png",            pdf: "images/избранное/mir/картина мира.pdf" },
-      { id: 'f4', cat: "Айдентика",        year: 2025, img: "images/избранное/2.png",            pdf: "images/избранное/eventifly/eventifly.pdf" },
-      { id: 'f5', cat: "Печатная графика", year: 2025, img: "images/океан/1.png",                pdf: "images/океан/2.pdf" },
-      { id: 'f6', cat: "Веб-дизайн",       year: 2025, img: "images/избранное/лонгрид/1.png",    pdf: "images/избранное/лонгрид/2.pdf" },
+      { id: 'f1', cat: "Веб-дизайн",       year: 2025, img: getPath("images/features/5.PNG"),             pdf: "/images/features/autohub/autohub.pdf" },
+      { id: 'f2', cat: "Веб-дизайн",       year: 2025, img: getPath("images/features/4.PNG"),            pdf: "/images/features/autopart/autopart.pdf" },
+      { id: 'f3', cat: "Веб-дизайн",       year: 2025, img: getPath("images/features/1.PNG"),            pdf: "images/features/mir/картина мира.pdf" },
+      { id: 'f4', cat: "Айдентика",        year: 2025, img: getPath("images/features/2.PNG"),            pdf: "images/features/eventifly/eventifly.pdf" },
+      { id: 'f5', cat: "Печатная графика", year: 2025, img: getPath("images/ocean/1.png"),                pdf: "images/ocean/2.pdf" },
+      { id: 'f6', cat: "Веб-дизайн",       year: 2025, img: getPath("images/features/longrid/1.PNG"),    pdf: "images/features/longrid/2.pdf" },
     ],
     archive: [
       { id: 'a72', cat: "Айдентика",        year: 2026, img: "images/космическая станция/1.png",  pdf: "images/космическая станция/2.pdf" },
